@@ -305,14 +305,12 @@ class Halo(object):
             self._stream.write(s)
 
     def _hide_cursor(self):
-        """Disable the user's blinking cursor
-        """
+        """Disable the user's blinking cursor"""
         if self._check_stream() and self._stream.isatty():
             cursor.hide(stream=self._stream)
 
     def _show_cursor(self):
-        """Re-enable the user's blinking cursor
-        """
+        """Re-enable the user's blinking cursor"""
         if self._check_stream() and self._stream.isatty():
             cursor.show(stream=self._stream)
 
@@ -395,8 +393,7 @@ class Halo(object):
         return self
 
     def _render_frame(self):
-        """Renders the frame on the line after clearing it.
-        """
+        """Renders the frame on the line after clearing it."""
         if not self.enabled:
             # in case we're disabled or stream is closed while still rendering,
             # we render the frame and increment the frame index, so the proper
@@ -441,9 +438,11 @@ class Halo(object):
         text_frame = self.text_frame()
         return "{0} {1}".format(
             *[
-                (text_frame, frame)
-                if self._placement == "right"
-                else (frame, text_frame)
+                (
+                    (text_frame, frame)
+                    if self._placement == "right"
+                    else (frame, text_frame)
+                )
             ][0]
         )
 
